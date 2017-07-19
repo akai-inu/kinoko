@@ -1,6 +1,8 @@
 const path = require('path');
 const webpack = require('webpack');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
+const nodeExternals = require('webpack-node-externals');
+
 const isProduction = (process.env.NODE_ENV === 'production');
 const phaserBuildDir = path.resolve(__dirname, 'node_modules/phaser/build/custom');
 
@@ -58,7 +60,7 @@ module.exports = {
     resolve: {
         modules: [
             'node_modules',
-            path.resolve(__dirname, 'src')
+            path.resolve(__dirname, 'src', 'client')
         ],
         extensions: ['.js', '.ts'],
         alias: {
