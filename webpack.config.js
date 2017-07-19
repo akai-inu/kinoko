@@ -1,7 +1,6 @@
 const path = require('path');
 const webpack = require('webpack');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
-const nodeExternals = require('webpack-node-externals');
 
 const isProduction = (process.env.NODE_ENV === 'production');
 const phaserBuildDir = path.resolve(__dirname, 'node_modules/phaser/build/custom');
@@ -20,33 +19,27 @@ module.exports = {
         rules: [
             {
                 test: /\.ts$/,
-                use: ['ts-loader']
+                loader: 'ts-loader'
             },
             {
                 test: /\.ts$/,
-                use: ['tslint-loader'],
+                loader: 'tslint-loader',
                 enforce: 'pre'
             },
             {
                 test: /pixi\.js$/,
-                use: [{
-                    loader: 'expose-loader',
-                    options: 'PIXI'
-                }]
+                loader: 'expose-loader',
+                options: 'PIXI'
             },
             {
                 test: /p2\.js$/,
-                use: [{
-                    loader: 'expose-loader',
-                    options: 'p2'
-                }]
+                loader: 'expose-loader',
+                options: 'p2'
             },
             {
                 test: /phaser-split\.js$/,
-                use: [{
-                    loader: 'expose-loader',
-                    options: 'phaser'
-                }]
+                loader: 'expose-loader',
+                options: 'phaser'
             }
         ]
     },

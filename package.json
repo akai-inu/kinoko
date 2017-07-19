@@ -23,8 +23,7 @@
     "tslint": "^5.5.0",
     "tslint-loader": "^3.5.3",
     "typescript": "^2.4.1",
-    "webpack": "^2.7",
-    "webpack-node-externals": "^1.6.0"
+    "webpack": "^2.7"
   },
   "dependencies": {
     "express": "^4.15.3"

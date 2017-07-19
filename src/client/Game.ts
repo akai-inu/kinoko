@@ -1,8 +1,3 @@
-/// <reference path="../../node_modules/phaser/typescript/phaser.d.ts"/>
-/// <reference path="../../node_modules/phaser/typescript/pixi.d.ts"/>
-
-import 'PIXI';
-import 'p2';
 import * as Phaser from 'phaser';
 
 export default class {

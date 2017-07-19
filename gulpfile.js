@@ -4,7 +4,7 @@ const gls = require('gulp-live-server');
 
 gulp.task('default', () => {
     return gulp.src('src/server/**/*.ts')
-        .pipe(ts.createProject('tsconfig.json')())
+        .pipe(ts.createProject('src/server/tsconfig.json')())
         .js.pipe(gulp.dest('build/server'));
 });
 
@@ -15,7 +15,7 @@ gulp.task('debug-serve', ['default'], () => {
     // apply for foreground files
     gulp.watch('public/**', file => {
         server.notify.apply(server, [file]);
-    })
+    });
 
     // restart server for background files
     gulp.watch('src/server/**/*.ts', ['default']);
