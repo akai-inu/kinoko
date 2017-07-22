@@ -1,11 +1,14 @@
 import * as Phaser from 'phaser';
 
 export default class Player extends Phaser.Sprite {
-    private moveTarget = new Phaser.Point(-1, -1);
+    public onPlayerClick = new Phaser.Signal();
+
+    public moveTarget = new Phaser.Point(-1, -1);
     private physics: Phaser.Physics.Arcade;
 
     constructor(game: Phaser.Game) {
         super(game, 32, 32, 'player');
+        game.world.addChild(this);
         this.anchor.setTo(0.5, 0.5);
         this.physics = game.physics.arcade;
         this.physics.enable(this);
@@ -20,6 +23,7 @@ export default class Player extends Phaser.Sprite {
 
     private onTap(pointer: Phaser.Pointer, doubleTap: boolean) {
         this.moveTarget = pointer.position.clone();
+        this.onPlayerClick.dispatch(this.moveTarget);
 
         // @todo コマンドの発行
     }

@@ -16,6 +16,7 @@ export default class extends State {
         loadingText.setTextBounds(0, 0, 800, 100);
 
         this.game.load.image('player', 'assets/player.png');
+        this.game.load.image('player-target', 'assets/player-target.png');
         this.game.load.image('mob', 'assets/mob.png');
     }
 
