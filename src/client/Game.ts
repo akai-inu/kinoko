@@ -7,7 +7,7 @@ import LoadState from './States/Load/LoadState';
 const width = 800;
 const height = 600;
 const renderer = AUTO;
-const parentDOM = undefined;
+const parentDOM = 'content';
 const state = undefined;
 const transparent = false;
 const antialias = false;
