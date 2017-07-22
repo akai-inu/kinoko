@@ -1,5 +1,5 @@
-import {join} from 'path';
 import * as express from 'express';
+import {join} from 'path';
 
 const port = process.env.PORT || 8080;
 const app = express();

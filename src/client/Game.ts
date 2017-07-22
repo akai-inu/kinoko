@@ -1,47 +1,34 @@
-import * as Phaser from 'phaser';
+import {AUTO, Game} from 'phaser';
+import * as StateList from './StateList';
+import BattleState from './States/Battle/BattleState';
+import BootState from './States/Boot/BootState';
+import LoadState from './States/Load/LoadState';
 
-let game: Phaser.Game;
+const width = 800;
+const height = 600;
+const renderer = AUTO;
+const parentDOM = undefined;
+const state = undefined;
+const transparent = false;
+const antialias = false;
+// @link https://github.com/photonstorm/phaser/blob/v2.6.2/src/physics/Physics.js#L112
+const physicsConfig = {
+  arcade: true,
+  box2d: false,
+  matter: false,
+  ninja: false,
+  p2: false,
+};
 
-export default class {
-  player: Phaser.Sprite;
-  lastTapped: Phaser.Point;
-
+export default class MainGame extends Game {
   constructor() {
-    game = new Phaser.Game(800, 600, Phaser.AUTO, null, this, false, false, null);
+    super(width, height, renderer, parentDOM, state, transparent, antialias, physicsConfig);
   }
 
-  preload() {
-    game.load.image('player', 'assets/player.png');
-  }
-
-  create() {
-    game.physics.startSystem(Phaser.Physics.ARCADE);
-
-    this.player = game.add.sprite(256, 256, 'player');
-    this.player.anchor.setTo(0.5, 0.5);
-    game.physics.arcade.enable(this.player);
-    this.player.body.maxVelocity.set(2);
-    this.player.body.maxAngular = 100;
-    this.player.body.angularDrag = 50;
-    this.player.body.drag.set(50);
-
-    game.input.onTap.add(this.onTap.bind(this));
-  }
-
-  onTap(pointer: Phaser.Point, doubletap: boolean) {
-    this.lastTapped = pointer;
-  }
-
-  update() {
-    if (this.lastTapped && 3 < game.physics.arcade.distanceBetween(this.player, this.lastTapped)) {
-      game.physics.arcade.moveToXY(this.player, this.lastTapped.x, this.lastTapped.y, 2, 10000);
-    }
-  }
-
-  render() {
-    if (this.lastTapped) {
-      game.debug.text(`lastTapped : ${this.lastTapped.x}, ${this.lastTapped.y}`, 0, 16);
-    }
-    game.debug.spriteInfo(this.player, 0, 32);
+  public start() {
+    this.state.add(StateList.STATE_BOOT, BootState);
+    this.state.add(StateList.STATE_LOAD, LoadState);
+    this.state.add(StateList.STATE_BATTLE, BattleState);
+    this.state.start(StateList.STATE_BOOT);
   }
 }
