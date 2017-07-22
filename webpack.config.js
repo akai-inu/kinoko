@@ -6,7 +6,7 @@ const isProduction = (process.env.NODE_ENV === 'production');
 const phaserBuildDir = path.resolve(__dirname, 'node_modules/phaser/build/custom');
 
 module.exports = {
-    devtool: 'cheap-module-source-map',
+    devtool: 'cheap-module-eval-source-map',
     entry: {
         app: './src/client/entry',
         vendor: ['PIXI', 'p2', 'phaser']

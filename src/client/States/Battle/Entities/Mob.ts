@@ -12,10 +12,11 @@ export default class Mob extends Phaser.Sprite {
         this.anchor.set(0.5);
         this.getBody().allowRotation = true;
         this.angle = game.rnd.angle();
-        this.getBody().velocity = game.physics.arcade.velocityFromAngle(this.angle, 0.8);
-        this.getBody().setCircle(16, 3, 3);
+        this.getBody().velocity = game.physics.arcade.velocityFromAngle(this.angle, 1.2);
+        this.getBody().setCircle(16);
         this.getBody().collideWorldBounds = true;
         this.getBody().maxVelocity.set(1);
+        this.getBody().bounce.set(1);
         this.inputEnabled = true;
         this.events.onInputDown.add(this.onInputDown.bind(this));
         this.events.onInputUp.add(this.onInputUp.bind(this));
