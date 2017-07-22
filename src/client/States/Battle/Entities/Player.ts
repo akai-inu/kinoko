@@ -1,8 +1,6 @@
 import * as Phaser from 'phaser';
 
 export default class Player extends Phaser.Sprite {
-    public onPlayerClick = new Phaser.Signal();
-
     public moveTarget = new Phaser.Point(-1, -1);
     private physics: Phaser.Physics.Arcade;
 
@@ -13,19 +11,15 @@ export default class Player extends Phaser.Sprite {
         this.physics = game.physics.arcade;
         this.physics.enable(this);
         this.getBody().maxVelocity.set(2);
-
-        game.input.onTap.add(this.onTap.bind(this));
     }
 
     public update() {
         this.moveToTarget();
     }
 
-    private onTap(pointer: Phaser.Pointer, doubleTap: boolean) {
-        this.moveTarget = pointer.position.clone();
-        this.onPlayerClick.dispatch(this.moveTarget);
-
-        // @todo コマンドの発行
+    public onPlayerMove(point: Phaser.Point) {
+        // 移動先を更新する
+        this.moveTarget = point;
     }
 
     /**

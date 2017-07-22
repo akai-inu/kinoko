@@ -18,6 +18,7 @@ export default class extends State {
         this.game.load.image('player', 'assets/player.png');
         this.game.load.image('player-target', 'assets/player-target.png');
         this.game.load.image('mob', 'assets/mob.png');
+        this.game.load.image('mob-target', 'assets/mob-target.png');
     }
 
     public create() {
