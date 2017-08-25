@@ -1,0 +1,13 @@
+{
+    "compilerOptions": {
+      "downlevelIteration": true,
+      "module": "commonjs",
+      "noEmitOnError": true,
+      "skipLibCheck": true,
+      "strict": true,
+      "target": "es5"
+    },
+    "exclude": [
+      "**/*.json"
+    ]
+  }
