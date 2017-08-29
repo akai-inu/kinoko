@@ -14,6 +14,9 @@
         ],
         "max-line-length": [
             false
+        ],
+        "semicolon": [
+            false
         ]
     },
     "rulesDirectory": []
